@@ -10,7 +10,7 @@
         </tr>
 <?php foreach ($data as $row) {?>
     <tr>
-        <td><img width="50" src="application/images/<?=$row->photo?>"></td>
+        <td><img height="50" src="application/images/<?=$row->photo?>"></td>
         <td><?=$row->firstname . ' ' . $row->lastname?></td>
         <td><?=$row->report_subject?></td>
         <td><a href="<?=$row->email?>"><?=$row->email?></a><br></td>

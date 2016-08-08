@@ -35,73 +35,73 @@
 <h1>To participate in the conference, please fill out the form</h1>
 <h3 id="mentions"><a href="/list">All members (<?=$data?>)</a></h3>
 
-<div class="form-container" style="width: 45%">
-<form id="info" action="" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">
-<div class="mainInfo" id="mainInfo" name="mainInfo">
-    <div class="form-group">
-        <div class="form-group">
-            <label class="control-label">Firstname*</label>
-            <input name="firstname" id="firstname" class="form-control" required>
-            <div class="help-block with-errors"></div>
+<div class="form-container">
+    <form id="info" action="" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">
+        <div class="mainInfo" id="mainInfo" name="mainInfo" style="display: inline-block">
+            <div class="form-group">
+                <div class="form-group">
+                <label class="control-label">Firstname*</label>
+                <input name="firstname" id="firstname" maxlength="255" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group">
+                <label class="control-label">Lastname*</label>
+                <input name="lastname" id="lastname" maxlength="255" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group">
+                <label class="control-label">Birthday*</label>
+                <div class="bfh-datepicker" data-format="y-m-d" data-min="1900-01-01" data-name="birthday" id="birthday"></div>
+            </div>
+                <div class="form-group">
+                <label>Country*</label>
+                <div class="country-select bfh-selectbox bfh-countries" data-required="true" data-name="country" id="country" data-country="US" data-flags="true"></div>
+            </div>
+                <div class="form-group">
+                <label class="control-label">Report Subject*</label>
+                <input name="report_subject" maxlength="255" id="report_subject" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group">
+                <label class="control-label">Phone Number*</label>
+                <input type="text" class="form-control bfh-phone" pattern="\+1 \(\d{3}\) \d{3}-\d{4}" name="phone" id="phone" data-format="+1 (ddd) ddd-dddd" required>
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group">
+                <label class="control-label">Email*</label>
+                <input name="email" id="email" class="form-control" maxlength="255" data-error="That email address is invalid" type="email" required>
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="display_other_form()" type="button" name="next" style="width: 30%; margin-left: 70%">Next</button>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label">Lastname*</label>
-            <input name="lastname" id="lastname" class="form-control" required>
-            <div class="help-block with-errors"></div>
-        </div>
-        <div class="form-group">
-            <label class="control-label">Birthday*</label>
-            <div class="bfh-datepicker" data-format="y-m-d" data-min="1900-01-01" data-name="birthday" id="birthday"></div>
-        </div>
-        <div class="form-group">
-            <label>Country*</label>
-            <div class="country-select bfh-selectbox bfh-countries" data-required="true" data-name="country" id="country" data-country="US" data-flags="true"></div>
-        </div>
-        <div class="form-group">
-            <label class="control-label">Report Subject*</label>
-            <input name="report_subject" id="report_subject" class="form-control" required>
-            <div class="help-block with-errors"></div>
-        </div>
-        <div class="form-group">
-            <label class="control-label">Phone Number*</label>
-            <input type="text" class="form-control bfh-phone" pattern="\+1 \(\d{3}\) \d{3}-\d{4}" name="phone" id="phone" data-format="+1 (ddd) ddd-dddd" required>
-            <div class="help-block with-errors"></div>
-        </div>
-        <div class="form-group">
-            <label class="control-label">Email*</label>
-            <input name="email" id="email" class="form-control" data-error="That email address is invalid" type="email" required>
-            <div class="help-block with-errors"></div>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary" onclick="display_other_form()" type="button" name="next">Next</button>
-        </div>
-    </div>
-</div>
 
-<div class="moreInfo" name="moreInfo" id="moreInfo" style="display: none;">
-<div class="form-group">
-    <div class="form-group">
-        <label>Company</label>
-        <input name="company" id="company" class="form-control">
-    </div>
-    <div class="form-group">
-        <label>Position</label>
-        <input name="position" id="position" class="form-control">
-    </div>
-    <div class="form-group">
-        <label>About Me</label>
-        <textarea name="about_me" id="about_me" class="form-control" type="text-area">
+        <div class="moreInfo" name="moreInfo" id="moreInfo" style="display: none;">
+            <div class="form-group">
+        <div class="form-group">
+            <label>Company</label>
+            <input name="company" maxlength="255" id="company" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Position</label>
+            <input name="position" maxlength="255" id="position" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>About Me</label>
+            <textarea name="about_me" id="about_me" class="form-control" type="text-area">
 
-        </textarea>
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label>Photo</label>
+            <input name="photo" id="photo" accept="image/*" class="form-control" type="file">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="display_share()" id="submit" name="submit" style="width: 50%; margin-left: 50%">Next</button>
     </div>
-    <div class="form-group">
-        <label>Photo</label>
-        <input name="photo" id="photo" class="form-control" type="file">
-    </div>
-    <button type="button" class="btn btn-primary" onclick="display_share()" id="submit" name="submit">Next</button>
-</div>
-</div>
-</form>
+        </div>
+    </form>
 </div>
 <div class="share" id="share" style="display:none;">
     <a href="https://www.facebook.com/sharer.php?u=main&t=Check out this Meetup with SoCal AngularJS!&src=sp" target="_blank"><img width="64" src="application/images/f.png"></a>
@@ -149,7 +149,7 @@
 
     function display_share() {
         localStorage.clear();
-        document.getElementById('share').style.display = "";
-        document.getElementById('moreInfo').style.display = "none";
+        $('#share').show();
+        $('#moreInfo').hide();
     }
 </script>
