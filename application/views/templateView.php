@@ -11,6 +11,7 @@
     <script src="application/Country/jquery/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="application/Country/bootstrap/css/bootstrap.css">
     <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="application/scripts/jquery.deserialize.js"></script>
     <link rel="stylesheet" type="text/css" href="application/Country/bootstrap-formhelpers/css/bootstrap-formhelpers.css">
     <script src="application/Country/bootstrap-formhelpers/js/bootstrap-formhelpers.js"></script>
     <script src="application/bootstrap-validator/js/validator.js"></script>

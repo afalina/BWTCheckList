@@ -1,19 +1,15 @@
-<!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.7567191770104!2d-118.34340506644727!3d34.10137225437417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bf20fc7f1f3d%3A0xaebc7fb4fe5179a4!2zNzA2MCBIb2xseXdvb2QgQmx2ZCwgTG9zIEFuZ2VsZXMsIENBIDkwMDI4LCDQodCo0JA!5e0!3m2!1sru!2sua!4v1470124428505" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>-->
 <style>
     #map {
         height: 450px;
         width: 100%;
     }
 </style>
-<div id="map">hello</div>
+<div id="map"></div>
 
 <script>
 
-    var lat, lng;
     function initMap() {
-        GetLocation('7060 Hollywood Blvd, Los Angeles, CA');
-        alert(lat);
-        var myLatLng = {lat: lat, lng: lng};
+        var myLatLng = {lat: 34.1011679, lng: -118.3460136};
 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 16,
@@ -23,21 +19,7 @@
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
-            title: 'Hello World!'
-        });
-    }
-
-    function GetLocation(string_address) {
-        var geocoder = new google.maps.Geocoder();
-        var address = string_address;
-        geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                lat = results[0].geometry.location.lat();
-                lng = results[0].geometry.location.lng();
-
-            } else {
-                alert("Request failed.")
-            }
+            title: '7060 Hollywood Blvd, Los Angeles, CA'
         });
     }
 
@@ -51,7 +33,7 @@
 
 
 <h1>To participate in the conference, please fill out the form</h1>
-<h3><a href="/list">All members (<?=$data?>)</a></h3>
+<h3 id="mentions"><a href="/list">All members (<?=$data?>)</a></h3>
 
 <div class="form-container" style="width: 45%">
 <form id="info" action="" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">
@@ -147,17 +129,26 @@
 </script>
 
 <script>
+    if (localStorage.length != 0) {
+        $('form').deserialize(localStorage.getItem('info'));
+        display_other_form();
+    }
     function display_other_form() {
-        if (document.getElementsByName('firstname')[0].value != '' &
-            document.getElementsByName('lastname')[0].value != '' &
-            document.getElementsByName('report_subject')[0].value != '' &
+        if (document.getElementsByName('firstname')[0].value != '' &&
+            document.getElementsByName('lastname')[0].value != '' &&
+            document.getElementsByName('report_subject')[0].value != '' &&
             document.getElementsByName('email')[0].value != '') {
-            document.getElementById('moreInfo').style.display = "";
-            document.getElementById('mainInfo').style.display = "none";
+                $('#moreInfo').show();
+                $('#mainInfo').hide();
+                localStorage.setItem('info', $('form').serialize());
+                $('#company, #position, #about_me').on('input', function(){
+                    localStorage.setItem('info', $('form').serialize());
+                });
         }
     }
 
     function display_share() {
+        localStorage.clear();
         document.getElementById('share').style.display = "";
         document.getElementById('moreInfo').style.display = "none";
     }
