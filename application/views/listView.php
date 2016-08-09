@@ -8,12 +8,15 @@
             <td><b>Subject</b></td>
             <td><b>email</b></td>
         </tr>
-<?php foreach ($data as $row) {?>
+
+<?php
+
+foreach ($data as $row) {?>
     <tr>
         <td><img height="50" src="application/images/<?=$row->photo?>"></td>
-        <td style="overflow-wrap: break-word;"><?=$row->firstname . ' ' . $row->lastname?></td>
-        <td style="overflow-wrap: break-word;"><?=$row->report_subject?></td>
-        <td style="overflow-wrap: break-word;"><a href="<?=$row->email?>"><?=$row->email?></a><br></td>
+        <td style="overflow-wrap: break-word;"><?=escape_html($row->firstname) . ' ' . escape_html($row->lastname)?></td>
+        <td style="overflow-wrap: break-word;"><?=escape_html($row->report_subject)?></td>
+        <td style="overflow-wrap: break-word;"><a href="<?=escape_html($row->email)?>"><?=escape_html($row->email)?></a><br></td>
     </tr>
 <?}
 ?>

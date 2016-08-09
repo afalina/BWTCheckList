@@ -3,7 +3,7 @@ class ModelList extends Model
 {
     public function getData()
     {
-        $participants = \App\Participant::all();
+        $participants = \App\Participant::orderBy('id', 'desc')->get();
         return $participants;
     }
 }
