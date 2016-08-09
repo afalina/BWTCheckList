@@ -64,7 +64,7 @@
             </div>
                 <div class="form-group">
                 <label class="control-label">Phone Number*</label>
-                <input type="text" class="form-control bfh-phone" name="phone" id="phone" data-country="country" minlength="12" required>
+                <input type="text" class="form-control bfh-phone" name="phone" id="phone" data-country="country" minlength="17">
                 <div class="help-block with-errors"></div>
             </div>
                 <div class="form-group">
