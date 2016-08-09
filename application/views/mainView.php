@@ -55,7 +55,7 @@
             </div>
                 <div class="form-group">
                 <label>Country*</label>
-                <div class="country-select bfh-selectbox bfh-countries" data-required="true" data-name="country" id="country" data-country="US" data-flags="true"></div>
+                <div class="country-select bfh-selectbox bfh-countries" data-blank="false" data-name="country" id="country" data-country="US" data-flags="true"></div>
             </div>
                 <div class="form-group">
                 <label class="control-label">Report Subject*</label>
@@ -64,7 +64,7 @@
             </div>
                 <div class="form-group">
                 <label class="control-label">Phone Number*</label>
-                <input type="text" class="form-control bfh-phone" pattern="\+1 \(\d{3}\) \d{3}-\d{4}" name="phone" id="phone" data-format="+1 (ddd) ddd-dddd" required>
+                <input type="text" class="form-control bfh-phone" name="phone" id="phone" data-country="country" minlength="12" required>
                 <div class="help-block with-errors"></div>
             </div>
                 <div class="form-group">
@@ -98,12 +98,13 @@
             <label>Photo</label>
             <input name="photo" id="photo" accept="image/jpeg, image/gif" class="form-control" type="file">
         </div>
-        <button type="button" class="btn btn-primary" id="submit" name="submit" style="width: 50%; margin-left: 50%">Next</button>
+        <button type="button" class="btn btn-primary" id="submit" name="submit" style="width: 30%; margin-left: 70%">Next</button>
     </div>
         </div>
     </form>
 </div>
 <div class="share" id="share" style="display:none;">
+    <h5><a href="/main">Fill form again</a></h5>
     <h3>Share with friends</h3>
     <a href="https://www.facebook.com/sharer.php?u=http://<?=$_SERVER['HTTP_HOST']?>&t=<?=SHARE?>&src=sp" target="_blank"><img width="64" src="application/images/f.png"></a>
     <a href="https://twitter.com/share?text=<?=SHARE?>&url=http://<?=$_SERVER['HTTP_HOST']?>" target="_parent"><img width="64" src="application/images/tt.png"></a>
@@ -130,12 +131,14 @@
 </script>
 
 <script>
+
     if (localStorage.length != 0) {
         $('form').deserialize(localStorage.getItem('info'));
         display_other_form();
     }
 
     function display_other_form() {
+        $('#info').validator('validate');
         if (document.getElementsByName('firstname')[0].value != '' &&
             document.getElementsByName('lastname')[0].value != '' &&
             document.getElementsByName('report_subject')[0].value != '' &&
