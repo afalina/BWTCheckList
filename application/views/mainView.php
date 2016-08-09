@@ -9,7 +9,7 @@
 <script>
 
     function initMap() {
-        var myLatLng = {lat: 34.1011679, lng: -118.3460136};
+        var myLatLng = {lat: <?=LAT?>, lng: <?=LNG?>};
 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 16,
@@ -32,7 +32,7 @@
 
 
 
-<h1>To participate in the conference, please fill out the form</h1>
+<h1 id="participating">To participate in the conference, please fill out the form</h1>
 <h3 id="mentions"><a href="/list">All members (<?=$data?>)</a></h3>
 
 <div class="form-container">
@@ -96,17 +96,18 @@
         </div>
         <div class="form-group">
             <label>Photo</label>
-            <input name="photo" id="photo" accept="image/*" class="form-control" type="file">
+            <input name="photo" id="photo" accept="image/jpeg, image/gif" class="form-control" type="file">
         </div>
-        <button type="button" class="btn btn-primary" onclick="display_share()" id="submit" name="submit" style="width: 50%; margin-left: 50%">Next</button>
+        <button type="button" class="btn btn-primary" id="submit" name="submit" style="width: 50%; margin-left: 50%">Next</button>
     </div>
         </div>
     </form>
 </div>
 <div class="share" id="share" style="display:none;">
-    <a href="https://www.facebook.com/sharer.php?u=main&t=Check out this Meetup with SoCal AngularJS!&src=sp" target="_blank"><img width="64" src="application/images/f.png"></a>
-    <a href="https://twitter.com/share?text=Check out this Meetup with SoCal AngularJS!&url=/main" target="_parent"><img width="64" src="application/images/tt.png"></a>
-    <a href="https://plus.google.com/share?url=/main" target="_blank"><img width="64" src="application/images/gp.png"></a>
+    <h3>Share with friends</h3>
+    <a href="https://www.facebook.com/sharer.php?u=http://<?=$_SERVER['HTTP_HOST']?>&t=<?=SHARE?>&src=sp" target="_blank"><img width="64" src="application/images/f.png"></a>
+    <a href="https://twitter.com/share?text=<?=SHARE?>&url=http://<?=$_SERVER['HTTP_HOST']?>" target="_parent"><img width="64" src="application/images/tt.png"></a>
+    <a href="https://plus.google.com/share?url=http://<?=$_SERVER['HTTP_HOST']?>" target="_blank"><img width="64" src="application/images/gp.png"></a>
 </div>
 
 <script>
@@ -121,7 +122,7 @@
         });
 
         request.done(function() {
-            alert('Success!');
+            display_share();
         }).fail(function() {
             alert('Try again');
         })
@@ -133,6 +134,7 @@
         $('form').deserialize(localStorage.getItem('info'));
         display_other_form();
     }
+
     function display_other_form() {
         if (document.getElementsByName('firstname')[0].value != '' &&
             document.getElementsByName('lastname')[0].value != '' &&
@@ -149,6 +151,7 @@
 
     function display_share() {
         localStorage.clear();
+        document.getElementById('participating').innerHTML = 'Thanks for form filling';
         $('#share').show();
         $('#moreInfo').hide();
     }
