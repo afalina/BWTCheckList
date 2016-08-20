@@ -1,5 +1,7 @@
 <?php
-class ModelList extends Model 
+namespace App;
+
+class ModelList extends \App\Model
 {
     public function getData()
     {

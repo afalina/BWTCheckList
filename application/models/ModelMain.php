@@ -1,5 +1,7 @@
 <?php
-class ModelMain extends Model 
+namespace App;
+
+class ModelMain extends \App\Model
 {
     public function setData($data)
     {

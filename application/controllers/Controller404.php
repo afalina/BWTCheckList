@@ -1,5 +1,7 @@
 <?php
-class Controller404 extends Controller
+namespace App;
+
+class Controller404 extends \App\Controller
 {
     public function actionIndex()
     {   

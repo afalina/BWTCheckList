@@ -1,5 +1,7 @@
 <?php
-class ControllerMain extends Controller {
+namespace App;
+
+class ControllerMain extends \App\Controller {
     public function __construct()
     {
         $this->model = new ModelMain();

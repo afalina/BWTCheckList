@@ -1,4 +1,6 @@
 <?php
+namespace App;
+
 class Route
 {
     static public function start()
@@ -12,9 +14,9 @@ class Route
         if (!empty($routes[2]) ) {
             $actionName = $routes[2];
         }
-        Route::includeModelFile($controllerName);
-        Route::includeControllerFile($controllerName);
-        Route::addAction($actionName, $controllerName);
+        \App\Route::includeModelFile($controllerName);
+        \App\Route::includeControllerFile($controllerName);
+        \App\Route::addAction($actionName, $controllerName);
     }
 
     public function includeModelFile($controllerName) 
@@ -31,19 +33,19 @@ class Route
         if(file_exists($controllerPath)) {
             include $controllerPath;
         } else {
-            Route::ErrorPage404();
+            \App\Route::ErrorPage404();
         }
     }
 
     public function addAction($actionName, $controllerName) 
     {
-        $controllerName = 'Controller'.$controllerName;
+        $controllerName = '\App\Controller'.$controllerName;
         $controller = new $controllerName;
         $action = 'action'.$actionName;
         if(method_exists($controller, $action)) {
             $controller->$action();
         } else {
-            Route::ErrorPage404();
+            \App\Route::ErrorPage404();
         }
     }
 

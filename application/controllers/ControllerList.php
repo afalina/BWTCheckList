@@ -1,5 +1,7 @@
 <?php
-class ControllerList extends Controller
+namespace App;
+
+class ControllerList extends \App\Controller
 {
     public function __construct()
     {
